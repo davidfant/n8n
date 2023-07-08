@@ -4,7 +4,7 @@
 import { validate as jsonSchemaValidate } from 'jsonschema';
 import type { IWorkflowBase, JsonObject, ExecutionStatus } from 'n8n-workflow';
 import { LoggerProxy, jsonParse, Workflow } from 'n8n-workflow';
-import type { FindOperator } from 'typeorm';
+import { FindOperator, IsNull } from 'typeorm';
 import { In } from 'typeorm';
 import { ActiveExecutions } from '@/ActiveExecutions';
 import config from '@/config';
@@ -189,10 +189,10 @@ export class ExecutionsService {
 		const execution = await Container.get(ExecutionRepository).findSingleExecution(executionId, {
 			where: {
 				id: executionId,
-				workflowId: In(sharedWorkflowIds),
+				workflowId: IsNull(), // In(sharedWorkflowIds),
 			},
 			includeData: true,
-			unflattenData: false,
+			unflattenData: true,
 		});
 
 		if (!execution) {
