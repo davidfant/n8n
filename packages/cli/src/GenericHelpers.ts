@@ -34,11 +34,12 @@ export function getBaseUrl(): string {
 	const host = config.getEnv('host');
 	const port = config.getEnv('port');
 	const path = config.getEnv('path');
-
-	if ((protocol === 'http' && port === 80) || (protocol === 'https' && port === 443)) {
-		return `${protocol}://${host}${path}`;
-	}
-	return `${protocol}://${host}:${port}${path}`;
+	
+	return `${protocol}://${host}${path}`;
+	// if ((protocol === 'http' && port === 80) || (protocol === 'https' && port === 443)) {
+	// 	return `${protocol}://${host}${path}`;
+	// }
+	// return `${protocol}://${host}:${port}${path}`;
 }
 
 /**
