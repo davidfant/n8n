@@ -182,8 +182,8 @@ export class ExecutionsService {
 	static async getExecution(
 		req: ExecutionRequest.Get,
 	): Promise<IExecutionResponse | IExecutionFlattedResponse | undefined> {
-		const sharedWorkflowIds = await this.getWorkflowIdsForUser(req.user);
-		if (!sharedWorkflowIds.length) return undefined;
+		// const sharedWorkflowIds = await this.getWorkflowIdsForUser(req.user);
+		// if (!sharedWorkflowIds.length) return undefined;
 
 		const { id: executionId } = req.params;
 		const execution = await Container.get(ExecutionRepository).findSingleExecution(executionId, {

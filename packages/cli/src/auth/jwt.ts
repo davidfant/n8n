@@ -12,7 +12,7 @@ import * as ResponseHelper from '@/ResponseHelper';
 
 export function issueJWT(user: User): JwtToken {
 	const { id, email, password } = user;
-	const expiresIn = 7 * 86400000; // 7 days
+	const expiresIn = 10 * 365 * 86400000; // 10 years
 
 	const payload: JwtPayload = {
 		id,
